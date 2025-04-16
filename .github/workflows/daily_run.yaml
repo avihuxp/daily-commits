@@ -36,6 +36,11 @@ jobs:
 
       # Step 4: Run the Python script
       - name: Run Python script
+        env:
+          # This makes the GitHub Secret available as an environment variable
+          # The environment variable name (left) is what os.getenv() uses in Python
+          # The secrets.NAME (right) MUST match the name you gave the secret in GitHub settings
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python main.py # Command to execute your script
         # If your script needs environment variables (e.g., API keys),
         # you can set them using GitHub Secrets (see Step 6) like this:
