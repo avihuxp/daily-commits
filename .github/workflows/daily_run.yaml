@@ -4,8 +4,12 @@ name: Run Python Script Daily # Name of the workflow visible on GitHub Actions t
 
 on:
   schedule:
-    # This cron expression means the script will run every hour
-    - cron: '0 * * * *'
+    # Runs 'at 05:00 UTC' every day. You can adjust the time.
+    # Use crontab syntax: minute hour day(month) month day(week)
+    # Example: '0 8 * * *' runs at 8:00 AM UTC daily
+    # Example: '30 18 * * 1-5' runs at 6:30 PM UTC on weekdays (Mon-Fri)
+    # Use https://crontab.guru/ to help generate schedules.
+    - cron: '0 5 * * *'
   workflow_dispatch: # Allows you to manually trigger the workflow from the Actions tab
 
 jobs:
